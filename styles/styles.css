@@ -29,10 +29,17 @@ body {
 
 .barra_superior {
     padding: .5rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 .barra_superior_usuario {
     color: #6C63FF;
+}
+
+.barra_superior_msj {
+    color: #999;
+    font-style: italic;
 }
 
 /* Titulo de la app */
