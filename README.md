@@ -17,6 +17,11 @@ Este proyecto está en su fase inicial de desarrollo... 🚧
 - **HTML5** para la estructura de la página. 
 - **CSS3** para los estilos visuales. 
 - **JavaScript** para la funcionalidad dinámica. 
-- **Ionicons** para los iconos de interfaz. 
+- **Ionicons** para los iconos de interfaz.
+
+## Deploy
+Este proyecto está publicado en **GitHub Pages** y podés verlo en vivo acá:  
+🔗 [Link](https://luqu33.github.io/Taskora-App/)
+
 
 ¡Gracias por tu interés en Taskora! Esperamos que esta aplicación te ayude a mantenerte organizado y productivo. 🚀
