@@ -232,6 +232,23 @@ body {
     opacity: 0.8;
 }
 
+/* Borde y msj cuando no hay tareas */
+.borde_noTareas {
+    border: .2rem solid #6C63FF;
+    border-radius: 2rem;
+    margin-top: 2rem;
+    height: 46.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.msj_noTareas {
+    color: #999;
+    font-style: italic;
+}
+
+
 /* Paginacion de tareas */
 
 .paginacion_tareas {
@@ -392,5 +409,5 @@ body {
 
 /* oculto */
 .oculto {
-    display: none !important;
+    display: none;
 }

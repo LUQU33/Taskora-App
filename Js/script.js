@@ -119,6 +119,20 @@ function fechaValida(fecha){
     return true;
 }
 
+// Funcion para mostrar mensaje de "No hay tareas"
+function noHayTareasMsj(array){
+
+    const listaTareas = document.getElementById("listaTareas");
+
+    // Verificamos si hay tareas
+    if (array.length === 0){
+        listaTareas.classList.add("borde_noTareas");
+        listaTareas.innerHTML = "<p class='msj_noTareas'>No hay tareas por ahora..</p>"
+    } else{
+        listaTareas.classList.remove("borde_noTareas");
+    }
+}
+
 // Funcion para mostrar tareas en la interfaz
 function mostrarTareas(array){
     const listaTareas = document.getElementById("listaTareas");
@@ -144,6 +158,7 @@ function mostrarTareas(array){
         </div>
         `
         listaTareas.appendChild(tarea);
+        noHayTareasMsj(array_tareas);
     });
 
     actualizarBotones(array_tareas.length);
@@ -184,3 +199,5 @@ document.getElementById("btnSiguiente").addEventListener("click", ()=>{
         mostrarTareas(array_tareas);
     }
 });
+
+noHayTareasMsj(array_tareas);
