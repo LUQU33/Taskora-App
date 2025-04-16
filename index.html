@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <!-- Css -->
+    <link rel="stylesheet" href="styles/styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body onload="mostrarReloj()">
+    <div class="barra_superior">
+        <div class="barra_superior_saludo">Bienvenido, <span class="barra_superior_usuario">visitante!</span></div>
+    </div>
+
+    <div class="contenedor_titulo">
+        <h1 class="titulo">Taskora</h1>
+    </div>
+
+    <div class="barra_interfaz">
+        <div class="barra_tareas contenedor">
+            <p class="barra_tareas_titulo">Lista de Tareas</p>
+            <div class="barra_tareas_botones">
+                <button class="btn_agregar boton">+</button>
+                <button class="btn_eliminar boton">-</button>
+            </div>
+        </div>
+        
+        <div class="contenedor_reloj contenedor" id="reloj">
+            <div id="hora"></div>
+            <div id="fecha"></div>
+        </div>
+    </div>
+
+    <div class="contenedor_lista_tareas">
+        <div class="lista_tareas" id="listaTareas">
+            
+            </div>
+        </div>
+    </div>
+
+    <div class="paginacion_tareas">
+        <button class="flecha" id="btnAnterior">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+        </button>
+        <button class="flecha" id="btnSiguiente">
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+        </button>
+    </div>
+
+    <!-- Ventana Modal para agregar tareas -->
+    <div class="modal_overlay" id="modalOverlay">
+        <div class="modal" id="modalAgregar">
+            <div class="modal_contenido">
+                <div class="div_btnCerrar">
+                    <span class="cerrar">&times;</span>
+                </div>
+                <h2 class="modal_titulo">Agregar Nueva <span class="modal_titulo_color">Tarea</span></h2>
+                
+                <form id="formulario_agregar_tarea">
+                    <div class="contenedor_form_tareas">
+                        <label for="form_titulo_tarea">Título</label>
+                        <input type="text" id="form_titulo_tarea" name="formTituloTarea" placeholder="Título de la tarea aquí.." required>
+                        <span class="error" id="errorTitulo"></span>
+                    </div>
+
+                    <div class="contenedor_form_tareas">
+                        <label for="form_descripcion_tarea">Descripción </label>
+                        <textarea id="form_descripcion_tarea" name="formDescTarea" placeholder="Descripción de la tarea aquí.." required></textarea>
+                        <span class="error" id="errorDescripcion"></span>
+                    </div>
+
+                    <div class="contenedor_form_tareas">
+                        <label for="form_fecha_tarea">Fecha Límite</label>
+                        <input type="date" id="form_fecha_tarea" name="formFechaTarea" required>
+                        <span class="error" id="errorFecha"></span>
+                    </div>
+
+                    <div class="div_btnAgregar">
+                        <button type="submit" class="boton" id="btn_agregar_modal">Agregar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="Js/reloj.js"></script>
+    <script src="Js/Tarea.js"></script>
+    <script src="Js/script.js"></script>
+    <!-- Iconos -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

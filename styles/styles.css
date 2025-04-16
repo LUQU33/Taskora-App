@@ -1,0 +1,389 @@
+/* Estilos generales */
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+    margin: 0;
+    padding: 0;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color:#F5F5F5;
+    color: #1A1A1A;
+    font-size: 3rem;
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.contenedor {
+    background-color: #EAEAEA;
+    border-radius: 1rem;
+}
+
+/* Barra superior de saludo al usuario */
+
+.barra_superior {
+    padding: .5rem;
+}
+
+.barra_superior_usuario {
+    color: #6C63FF;
+}
+
+/* Titulo de la app */
+
+.contenedor_titulo {
+    padding: 1rem;
+    text-align: center;
+}
+
+.titulo {
+    position: relative;
+    display: inline-block;
+    color: #6C63FF;
+    font-size: 7rem;
+    font-weight: 700;
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeSlideDown 1s ease forwards;
+}
+
+@keyframes fadeSlideDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.titulo::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: .5rem;
+    background-color: #6C63FF;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.titulo:hover::after {
+    width: 60%;
+}
+
+/* Barra de lista de tareas y Reloj */
+
+.barra_interfaz {
+    display: flex;
+    justify-content: center;
+    gap: 2.5%;
+    padding: .5rem;
+}
+
+.barra_tareas {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 52.5%;
+}
+
+.barra_tarea_botones {
+    display: flex;
+}
+
+.boton {
+    border-radius: .6rem;
+    background-color: #F5F5F5;
+    border: 2px solid #6C63FF;
+    border-color: #6C63FF;
+    color: #6C63FF;
+    font-size: 2rem;
+    padding: 1rem;
+    transition: transform .2s ease, color .2s ease, border-color .2s ease;
+    width: 10rem;
+}
+
+.boton:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.btn_agregar {
+    margin-right: 1rem;
+}
+
+.contenedor_reloj {
+    padding: 1rem;
+    text-align: center;
+    width: 25%;
+    background-color: #4f46ff;
+}
+
+#hora {
+    color: #F5F5F5;
+}
+
+#fecha {
+    color: #F5F5F5;
+}
+
+/* Contenedor donde se muestran las tareas */
+
+.contenedor_lista_tareas {
+    padding: 1.5rem;
+    margin: auto;
+    width: 80%;
+}
+
+.lista_tareas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    height: 46.4rem;
+}
+
+.tarea {
+    border: 2px solid #6C63FF;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    list-style: none;
+    height: 22rem;
+    padding: .8rem;
+    transition: transform .2s ease;
+    width: 1fr;
+    overflow: hidden;
+}
+
+.tarea:hover {
+    transform: scale(1.05);
+}
+
+.tarea_titulo {
+    color: #4f46ff;
+    font-weight: 800;
+    border-bottom: 2px solid #6C63FF;
+    margin-bottom: .5rem;
+}
+
+.tarea_descripcion {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: .5rem;
+    padding-right: .5rem;
+
+    
+    /* Scrollbar para Firefox */
+    scrollbar-width: none;
+}
+
+/* Scrollbar general para navegadores WebKit (Chrome, Edge, Safari) */
+.tarea_descripcion::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/* Al hacer hover sobre la tarea, mostrar el scrollbar */
+.tarea:hover .tarea_descripcion::-webkit-scrollbar {
+    width: 6px;
+}
+
+.tarea:hover .tarea_descripcion::-webkit-scrollbar-thumb {
+    background-color: #A9A9A9;
+    border-radius: 4px;
+}
+
+.tarea:hover .tarea_descripcion {
+    scrollbar-width: thin; /* Para Firefox */
+    scrollbar-color: #A9A9A9 transparent;
+}
+
+.tarea_barra_inferior{
+    display: flex;
+    justify-content: space-between;
+}
+
+.tarea_fecha {
+    color: #999;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.tarea_estado {
+    color: #999;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* Paginacion de tareas */
+
+.paginacion_tareas {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.flecha {
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    transition: transform .3s ease;
+}
+
+.flecha:hover {
+    transform: scale(1.3);
+}
+
+/* Ventana modal para agregar tareas */
+
+.modal {
+    border-radius: 2rem;
+    margin: auto;
+    padding: 3rem;
+    width: 40%;
+
+    /* Para que sea modal */
+    display: none;
+    position: fixed;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal_contenido {
+    position: relative;
+}
+
+.formulario_agregar_tarea {
+    width: 20%;
+    margin: auto;
+}
+
+.div_btnCerrar {
+    display: flex;
+    justify-content: end;
+}
+
+.cerrar {
+    cursor: pointer;
+    font-size: 5rem;
+    transition: transform .3s ease;
+}
+
+.cerrar:hover {
+    transform: scale(1.3);
+}
+
+.modal_titulo {
+    position: relative;
+    text-align: center;
+    padding: 1rem;
+}
+
+.modal_titulo_color {
+    color: #6C63FF;
+}
+
+.contenedor_form_tareas{
+    align-items: center;
+    border: 2px solid #6C63FF;
+    border-radius: 2rem;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 2rem;
+}
+
+.contenedor_form_tareas label {
+    width: 30%;
+}
+
+.contenedor_form_tareas textarea {
+    resize: none;
+}
+
+.div_btnAgregar {
+    display: flex;
+    justify-content: end;
+}
+
+.div_btnAgregar button {
+    background-color: #4f46ff;
+    border: none;
+    color: #F5F5F5;
+}
+
+
+/* Estilo para inputs del formulario */
+
+.contenedor_form_tareas input,
+.contenedor_form_tareas textarea,
+.contenedor_form_tareas select {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.8rem;
+    padding: 1rem;
+    border: 2px solid #6C63FF;
+    border-radius: 1rem;
+    background-color: #F5F5F5;
+    color: #1A1A1A;
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contenedor_form_tareas input:focus,
+.contenedor_form_tareas textarea:focus,
+.contenedor_form_tareas select:focus {
+    outline: none;
+    border-color: #4f46ff;
+    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.2);
+}
+
+/* Placeholder estilo */
+.contenedor_form_tareas input::placeholder,
+.contenedor_form_tareas textarea::placeholder {
+    color: #999;
+    opacity: 0.8;
+}
+
+/* Overlay del modal (para el fondo oscuro una vez abierto el modal) */
+.modal_overlay {
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro con opacidad */
+    z-index: 90; /* Debajo del modal pero sobre el resto */
+}
+
+/* Errores */
+.error {
+    color: crimson;
+    font-size: 1.5rem;
+    font-style: italic;
+    grid-column: 2/3;
+}
+
+/* oculto */
+.oculto {
+    display: none !important;
+}
