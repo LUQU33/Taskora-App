@@ -11,9 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap" rel="stylesheet">
 </head>
-<body onload="mostrarReloj()">
+<body onload="mostrarReloj(); mostrarBienvenida();">
     <div class="barra_superior">
-        <div class="barra_superior_saludo">Bienvenido, <span class="barra_superior_usuario">visitante!</span></div>
+        <div class="barra_superior_saludo">Bienvenido, <span class="barra_superior_usuario" id="nombreUsuario">visitante!</span></div>
         <div class="barra_superior_msj">App en desarrollo</div>
     </div>
 
@@ -50,6 +50,27 @@
         <button class="flecha" id="btnSiguiente">
             <ion-icon name="arrow-forward-outline"></ion-icon>
         </button>
+    </div>
+
+    <!-- Ventana Modal para saludar usuario -->
+    <div class="modal_overlay" id="modalBienvenida">
+        <div class="modal" id="modalSaludo">
+            <div class="modal_contenido">
+                <h2 class="modal_titulo">Bienvenido a <span class="modal_titulo_color">Taskora</span></h2>
+
+                <form id="formulario_nombre_usuario">
+                    <div class="contenedor_form_usuario">
+                        <label for="form_nombre_usuario">Usuario</label>
+                        <input type="text" id="form_nombre_usuario" name="formNombreUsuario" placeholder="Nombre de usuario aquí.." required>
+                        <span class="error" id="errorUsuario"></span>
+                    </div>
+
+                    <div class="div_btnUsuario">
+                        <button type="submit" class="boton" id="btn_agregar_usuario">Iniciar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <!-- Ventana Modal para agregar tareas -->

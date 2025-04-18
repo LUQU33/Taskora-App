@@ -411,3 +411,50 @@ body {
 .oculto {
     display: none;
 }
+
+/* Modal bienvenida usuario */
+
+.contenedor_form_usuario {
+    align-items: center;
+    border: 2px solid #6C63FF;
+    border-radius: 2rem;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 2rem;
+}
+
+.contenedor_form_usuario input {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.8rem;
+    padding: 1rem;
+    border: 2px solid #6C63FF;
+    border-radius: 1rem;
+    background-color: #F5F5F5;
+    color: #1A1A1A;
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contenedor_form_usuario input:focus {
+    outline: none;
+    border-color: #4f46ff;
+    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.2);
+}
+
+.contenedor_form_usuario input::placeholder {
+    color: #999;
+    opacity: 0.8;
+}
+
+.div_btnUsuario {
+    display: flex;
+    justify-content: end;
+}
+
+.div_btnUsuario button {
+    background-color: #4f46ff;
+    border: none;
+    color: #F5F5F5;
+}

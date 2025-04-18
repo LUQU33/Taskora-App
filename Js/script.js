@@ -1,7 +1,51 @@
-// Ventana Modal
-const modal = document.getElementById("modalAgregar");
+// Ventana Modal Bienvenida Usuario
+const modalUsuario = document.getElementById("modalSaludo");
+const spanCloseUsuario = document.querySelector(".cerrar");
+const btnComenzarUsuario = document.getElementById("btn_agregar_usuario");
+const saludoUsuario = document.getElementById("nombreUsuario");
+
+// Funcion que muestra el modal al cargar la página
+const mostrarBienvenida = () => {
+    modalUsuario.style.display = "block";
+    modalUsuario.style.backgroundColor = "#F5F5F5";
+    document.getElementById("modalBienvenida").style.display = "flex";
+}
+
+// Agregar nombre de usuario a interfaz
+btnComenzarUsuario.addEventListener("click", (e)=>{
+    e.preventDefault(); // <- Evita que se envíe el formulario y recargue la página
+    let usuarioValido = true;
+    //inputs
+    const nombreUsuario = document.getElementById("form_nombre_usuario");
+    // error
+    const errorNombreUsuario = document.getElementById("errorUsuario");
+    // limpiamos posibles errores
+    errorNombreUsuario.textContent = "";
+    let nombreUsuarioFinal = nombreUsuario.value.trim();
+    // Validacion
+    if (!nombreUsuarioFinal || !isNaN(nombreUsuarioFinal)){
+        errorNombreUsuario.textContent = "Error, ingrese un nombre de usuario válido."
+        usuarioValido = false;
+    }
+    if (usuarioValido) {
+        saludoUsuario.innerHTML = `${nombreUsuarioFinal}!`;
+        cerrarModalBienvenida();
+    }
+})
+
+// Funcion que cierra el modal de usuario
+const cerrarModalBienvenida = () => {
+    modalUsuario.style.display = "none";
+    document.getElementById("modalBienvenida").style.display = "none";
+    // Limpiamos el formulario
+    document.getElementById("formulario_nombre_usuario").reset();
+    errorNombreUsuario.textContent = "";
+}
+
+// Ventana Modal Agregar Tareas
+const modalTarea = document.getElementById("modalAgregar");
 const btnAgregar = document.querySelector(".btn_agregar");
-const spanClose = document.querySelector(".cerrar");
+const spanCloseTarea = document.querySelector(".cerrar");
 const btnAgregarEnModal = document.getElementById("btn_agregar_modal");
 
 // Array de objetos tipo Tarea
@@ -13,10 +57,10 @@ const tareasPorPagina = 6;
 
 actualizarBotones(array_tareas.length);
 
-// Abrir Modal
+// Abrir Modal Agregar Tareas
 btnAgregar.addEventListener("click", () => {
-    modal.style.display = "block";
-    modal.style.backgroundColor = "#F5F5F5";
+    modalTarea.style.display = "block";
+    modalTarea.style.backgroundColor = "#F5F5F5";
     document.getElementById("modalOverlay").style.display = "flex";
 
     // Establecemos la fecha minima del input como hoy
@@ -30,9 +74,9 @@ btnAgregar.addEventListener("click", () => {
     fechaInput.min = fechaMinima;
 })
 
-// Funcion para cerrar modal
+// Funcion para cerrar modalTarea Agregar Tareas
 const cerrarModal = () => {
-    modal.style.display = "none";
+    modalTarea.style.display = "none";
     document.getElementById("modalOverlay").style.display = "none";
 
     //Limpiamos el formulario
@@ -43,7 +87,7 @@ const cerrarModal = () => {
 }
 
 // Cerramos si se clickea la "X" o si presionamos "Escape"
-spanClose.addEventListener("click", cerrarModal);
+spanCloseTarea.addEventListener("click", cerrarModal);
 document.addEventListener("keydown", (evento)=>{
     if(evento.key === "Escape"){
         cerrarModal();
